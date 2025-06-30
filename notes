@@ -1,0 +1,339 @@
+This file contains documentation for all functions in gl.
+
+functions by category:
+
+// data
+
+void cmd_cnt();
+
+        command-line arguments: (data index) (minimum value) (maximum value)
+	    
+        Gives the number of elements in the list between (minimum value) and (maximum value).
+	
+void cmd_dd();
+
+	command-line arguments: (data index)
+	
+	Frees (data index) from memory.
+
+void cmd_disp();
+
+	command-line arguments: (data index) (first element) (last element)
+	
+	Prints the elements in the list between positions (first element) and (last element).
+
+void cmd_dt();
+
+	Deletes all entries from the tag list.
+
+void cmd_flt();
+
+        command-line arguments: (data index) (minimum value) (maximum value)
+
+        Filters data in the tag list.
+	
+void cmd_minmax();
+
+        command-line arguments: (data index)
+
+        Gives the values of the minimum and maximum elements in the list.
+
+void cmd_sd();
+
+	Shows which data indices are free and which are occupied.	
+
+void cmd_tag();
+
+        command-line arguments: (input data index) (output data index)
+	        
+        Tags a data index for a subsequent 'flt' command.
+
+// file
+
+void cmd_load();
+
+	command-line arguments: (data index) (file)
+	
+	Loads (file) into (data index).
+	
+void cmd_loadtext();
+
+	command-line arguments: (data index) (file)
+	
+	Loads the text file (file) into (data index).
+	
+void cmd_save();
+
+	command-line arguments: (data index) (file)
+	
+	Saves (data index) into (file).
+	
+void cmd_savetext();
+
+	command-line arguments: (data index) (file)
+	
+	Saves the data in (data index) in text format to (file).
+	
+void cmd_xy();
+
+	command-line arguments: (x data index) (y data index) (data file name)
+	
+	Saves the data in xy-format in a text data file.
+	
+// list
+
+(values for (list) are 0 (loop list), 1 (step list), or 2 (save list))
+
+void cmd_dl();
+
+	command-line arguments: (list) (list index)
+	
+	Deletes an entry from (list).
+	
+void cmd_sl();
+
+	command-line arguments: (list)
+	
+	Shows all entries in (list).
+
+// loop
+
+void cmd_lp();
+
+	command-line arguments: (loop index) (number of runs) (progress)
+	
+	Runs the simulation (number of runs) times.
+	
+	If `progress' is set to `1', then the progress of the simulation is output to the screen.
+	If `progress' is set to `0', then there are no status messages output to the screen.
+
+void cmd_lpseed();
+
+	command-line arguments: (loop index) (random number generator data index) (data index low) (data index high) (number of elements)
+	
+	Uses the values given by (data_index_high*2^32+data index_low) as random number seeds for future runs.
+	
+void cmd_tsc();
+
+	command-line arguments: (loop index) (random number generator data index)
+	
+	Uses the processor's time stamp as the 64-bit random number seed.
+
+// plot
+
+void cmd_plotrect();
+
+	command-line arguments: (parameters data index) (nx) (ny) (eps file name)
+	
+	Plots the wild-type, suppressed, and extinct populations as green, blue, and red, respectively.
+
+// run
+
+void cmd_run();
+
+	command-line arguments: (parameters data index)
+	
+	Begins evolving the system.
+
+// save
+
+void cmd_fs();
+
+	command-line arguments: (save index) (parameters data index) (final steps data index) (number of runs)
+	
+	Saves the steps at the end of each run.
+	
+void cmd_ft();
+
+	command-line arguments: (save index) (parameters data index) (final time data index) (number of runs)
+	
+	Saves the time at the end of each run.
+	
+void cmd_fextinct();
+
+	command-line arguments: (save index) (parameters data index) (extinct data index) (number of runs)
+	
+	Saves 1 if all populations are extinct and 0 otherwise.
+	
+void cmd_fextinct1();
+
+	command-line arguments: (save index) (parameters data index) (extinct data index) (number of runs)
+	
+	Saves 1 if Population 1 goes extinct and 0 otherwise.
+	
+void cmd_fextinct2();
+
+	command-line arguments: (save index) (parameters data index) (extinct data index) (number of runs)
+	
+	Saves 1 if Population 2 goes extinct and 0 otherwise.
+	
+void cmd_svseed();
+
+        command-line arguments: (save index) (random number generator data index) (data index low) (data index high) (number of runs)
+
+        Saves the random number seed used for each run (data_index_high*2^32+data_index_low = seed).
+
+// set
+
+void cmd_iXmult();
+
+	command-line arguments: (parameters data index) (starting X) (multiple) (number) (value)
+		
+	Sets the initial state.
+
+void cmd_iX();
+
+	command-line arguments: (parameters data index) (X) (value)
+		
+	Sets the initial state.
+
+void cmd_rnglcg();
+
+	command-line arguments: (random number generator data index)
+	
+	Creates a data structure for the linear congruential random number generator.
+
+void cmd_rngmt();
+
+	command-line arguments: (random number generator data index)
+	
+	Creates a data structure for the Mersenne twister random number generator.
+
+void cmd_seed();
+
+	command-line arguments: (random number generator data index) (seed low) (seed high)
+	
+	Sets (seed_high*2^32+seed_low) as the seed of the random number generator.
+	
+void cmd_set();
+
+	command-line arguments: (parameters data index) (random number generator data index) (maximum time) (N) (eta) (phi) (pDXZ) (mu) (w) (fDX) (fDZ) (fYX) (fYZ) (gXX) (gXZ) (gZZ) (repopulation)
+
+	Creates a data structure for the evolution.
+	
+void cmd_settsc();
+
+	command-line arguments: (random number generator data index)
+	
+	Uses the processor's time stamp as the 64-bit random number seed.
+
+void cmd_ucomp();
+
+	command-line arguments: (parameters data index) (u)
+		
+	Sets the migration rates for the case of a complete graph.
+
+void cmd_urect();
+
+	command-line arguments: (parameters data index) (u) (nx) (ny)
+		
+	Sets the migration rates for the case of a rectangular grid.
+
+void cmd_ustar();
+
+	command-line arguments: (parameters data index) (u) (ustar) (nx)
+		
+	Sets the migration rates for the case of a line of populations.
+
+void cmd_uexp();
+
+	command-line arguments: (parameters data index) (amplitude) (decay) (nx) (ny)
+		
+	Sets the migration rate to decrease exponentially with distance.
+
+void cmd_u2();
+
+	command-line arguments: (parameters data index) (u12) (u21)
+		
+	Sets the migration rates for the case of two populations.
+
+void cmd_u3();
+
+	command-line arguments: (parameters data index) (u12) (u13) (u21) (u23) (u31) (u32)
+		
+	Sets the migration rates for the case of three populations.
+
+void cmd_u4();
+
+	command-line arguments: (parameters data index) (u12) (u13) (u14) (u21) (u23) (u24) (u31) (u32) (u34) (u41) (u42) (u43)
+		
+	Sets the migration rates for the case of four populations.
+
+void cmd_u5();
+
+	command-line arguments: (parameters data index) (u12) (u13) (u14) (u15) (u21) (u23) (u24) (u25) (u31) (u32) (u34) (u35) (u41) (u42) (u43) (u45) (u51) (u52) (u53) (u54)
+		
+	Sets the migration rates for the case of five populations.
+
+// step
+
+void cmd_X();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (X0 data index) (number of X values)
+	
+	Saves all X values at each trigger event.
+	
+void cmd_noDX();
+
+	command-line arguments: (step index) (parameters data index) (extra time)
+	
+	Ends the simulation when there are no more drive alleles.
+	
+void cmd_pop();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (s data index) (x data index) (w data index) (r data index)
+	
+	Saves the numbers of drive-infected, extinct, wild-type, and drive-resistant populations at each trigger event.
+	
+void cmd_extinct();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (number of extinctions data index) (number of individuals)
+	
+	Saves the total number of extinctions at each trigger event.
+	If the number of individuals in a subpopulation exceeds (number of individuals), then that subpopulation is considered to be repopulated.
+	
+void cmd_anrect();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (nx) (ny)
+	
+	Animates the wild-type, suppressed, and extinct populations as green, blue, and red, respectively.
+	
+void cmd_time();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (time data index)
+	
+	Saves the time at each trigger event.
+	
+void cmd_trigs();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (steps per interval) (progress)
+	
+	Sets up a trigger data structure that signals to other functions after every interval of
+	`steps per interval' steps has elapsed.
+	
+	If `progress' is set to `1', then the progress of the simulation is output to the screen.
+	If `progress' is set to `0', then there are no status messages output to the screen.
+
+	All trigger functions should be inserted before other functions in the step array.
+	
+void cmd_trigt();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (time per interval) (progress)
+	
+	Sets up a trigger data structure that signals to other functions after every interval of
+	`time per interval' time has elapsed.
+	
+	If `progress' is set to `1', then the progress of the simulation is output to the screen.
+	If `progress' is set to `0', then there are no status messages output to the screen.
+	
+	All trigger functions should be inserted before other functions in the step array.
+
+void cmd_trigtonce();
+
+	command-line arguments: (step index) (parameters data index) (trigger data index) (time) (number of runs)
+	
+	Sets up a trigger data structure that signals to other functions when the time equals
+	the specified value.
+	
+	All trigger functions should be inserted before other functions in the step array.
+	
